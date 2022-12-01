@@ -24,6 +24,8 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.*;
 import grupo.modelo.*;
+import static grupo.proyectocatalogodevideojuegos.PaginaInicialController.agregarAwishList;
+import java.util.PriorityQueue;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -71,9 +73,8 @@ public class InfoVideojuegoController implements Initializable {
         }
         Label tituloReview=new Label("Reseñas: ");
         
-        String avg=Float.toString(promedioValoracion(videojuegoe.getReviews()));
-        Label prome=new Label("Promedio de valoraciones: "+avg+"/100");
-        vboxReview.getChildren().addAll(prome,infoReview());
+        Label prome=new Label("Promedio de valoraciones: "+promedioValoracion()+"/100");
+        vBoxInformacionReview.getChildren().addAll(prome,infoReview());
         
         infoReview();
         mostrarVideojuegos(videojuegoe.getCapturasDePantalla());
@@ -166,26 +167,63 @@ public class InfoVideojuegoController implements Initializable {
         
         Label tituloReview=new Label("Reseñas: ");
         
-        Button botonfecha=new Button("Ver más antiguos:  ");
-        Button botonvaloracion =new Button("Ver más antiguos:  ");
-        infoReview.getChildren().addAll(tituloReview,botonfecha,botonvaloracion);
+        Button botonfecha=new Button("Ver más antiguos ");
+        botonfecha.setOnAction(eh->ordenarReviewsFecha());
+        Button botonValoracion =new Button("Ver por mejores Reseñas ");
+        botonValoracion.setOnAction(eh->ordenarReviewsValoracion());
+        infoReview.getChildren().addAll(tituloReview,botonfecha,botonValoracion);
 
        return infoReview; 
     }
 
-    public float promedioValoracion(LCDE<Review> reviews){
+    public String promedioValoracion(){
+        
         int s=0;
         int e=0;
-        for(Review r: reviews){
+        for(Review r: videojuegoe.getReviews()){
             s+=r.getValoracion(); 
             e++;
         }
         if(e==0){
-            return 0;
+            return "0";
         }
         
-        return (float) s/e;
+        String avg=Integer.toString(s/e);
+        return avg;
     }
-
     
+    public void ordenarReviewsFecha(){
+        LCDE<Review> tmp = new LCDE<>();
+        PriorityQueue<Review> colaReview = new PriorityQueue<>((v1,v2)->{
+            return v1.getFecha().compareTo(v2.getFecha());
+        });
+        for (Review v : videojuegoe.getReviews()) {
+            colaReview.offer(v);
+        }
+        while (!colaReview.isEmpty()) {
+            tmp.addLast(colaReview.remove());
+        }
+        vboxReview.getChildren().clear();
+
+        Reviews(tmp);
+    }
+    
+    
+        public void ordenarReviewsValoracion(){
+        LCDE<Review> tmp = new LCDE<>();
+        PriorityQueue<Review> colaReview = new PriorityQueue<>((v1,v2)->{
+            return v2.getValoracion()-(v1.getValoracion());
+        });
+        for (Review v : videojuegoe.getReviews()) {
+            colaReview.offer(v);
+        }
+        while (!colaReview.isEmpty()) {
+            tmp.addLast(colaReview.remove());
+        }
+        vboxReview.getChildren().clear();
+
+        Reviews(tmp);
+    }
 }
+
+
