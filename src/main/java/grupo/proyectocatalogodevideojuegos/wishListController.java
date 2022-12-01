@@ -12,6 +12,9 @@ import grupo.proyectocatalogodevideojuegos.PaginaInicialController;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.ResourceBundle;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -35,25 +38,13 @@ public class wishListController implements  Initializable {
     private VBox VBoxLista;
     @FXML
     private VBox contenedorPrincipal;
+    private Queue<VBox> cola = new LinkedList<>();
+    static LCDE<WishList> listaWishList = new LCDE<>();
 
     @Override
     public void initialize(URL url,ResourceBundle rb){
-        back.setOnMouseClicked(event -> {
-            try {
-                App.setRoot("paginaInicial");
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
-        
-        
-        btnAgregar.setOnAction(eh->{
-            asignarNombre();
-        });
-
-
-
-
+        VBoxLista.getChildren().addAll(cola);
+        actions();
     }
      private void asignarNombre(){
          VBox contenedorLista = new VBox();
@@ -69,17 +60,12 @@ public class wishListController implements  Initializable {
                 crearApartadoListas(hBoxParteDeArriba,contenedorLista);
             }
         });
-         
-         
-         
-         
-         
-         
      }
      
      private void crearApartadoListas(HBox hBoxParteDeArriba, VBox contenedorLista){
          TextField x = (TextField)hBoxParteDeArriba.getChildren().get(0);
          WishList lista =new WishList(x.getText());
+         this.listaWishList.addLast(lista);
          hBoxParteDeArriba.getChildren().clear();
          
          Label LbNombre = new Label(lista.getNombre());
@@ -89,11 +75,24 @@ public class wishListController implements  Initializable {
          hBoxParteDeArriba.getChildren().addAll(LbNombre,btnAnterior,btnSiguiente);
          
          HBox hBoxParteDeAbajo = new HBox();
-         hBoxParteDeAbajo.getChildren().add(btnAnterior);
          
-         contenedorLista.getChildren().addAll(hBoxParteDeArriba,hBoxParteDeAbajo);
-         
+         contenedorLista.getChildren().add(hBoxParteDeAbajo);
+         cola.add(contenedorLista);
      }
     
+     private void actions(){
+         back.setOnMouseClicked(event -> {
+            try {
+                App.setRoot("paginaInicial");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        
+        
+        btnAgregar.setOnAction(eh->{
+            asignarNombre();
+        });
+     }
 
 }

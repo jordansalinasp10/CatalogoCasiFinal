@@ -37,6 +37,7 @@ public class PaginaInicialController implements Initializable {
     @FXML
     private TilePane panel;
     public static Videojuego ultimoVideojuegoElegido;
+    public static Videojuego videojuegoElegidoWL;
     @FXML
     private TextField buscarTitulo;
     LCDE<Videojuego> videojuegos;
@@ -246,6 +247,13 @@ public class PaginaInicialController implements Initializable {
         listaRetorno.addLast(juego);
 
         System.out.println(juego);
+        
+        try {
+            videojuegoElegidoWL = videojuego;
+            App.setRoot("asignarWishList");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
 
 
     }

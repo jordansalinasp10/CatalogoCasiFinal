@@ -16,5 +16,12 @@ public class WishList {
     public LCDE<Videojuego> getLista() {
         return lista;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
+    
     
 }
