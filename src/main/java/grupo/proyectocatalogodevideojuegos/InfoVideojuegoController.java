@@ -24,6 +24,8 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.*;
 import grupo.modelo.*;
+import static grupo.proyectocatalogodevideojuegos.PaginaInicialController.agregarAwishList;
+import java.util.PriorityQueue;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -73,7 +75,7 @@ public class InfoVideojuegoController implements Initializable {
         
         String avg=Float.toString(promedioValoracion(videojuegoe.getReviews()));
         Label prome=new Label("Promedio de valoraciones: "+avg+"/100");
-        vboxReview.getChildren().addAll(prome,infoReview());
+        vBoxInformacionReview.getChildren().addAll(prome,infoReview());
         
         infoReview();
         mostrarVideojuegos(videojuegoe.getCapturasDePantalla());
@@ -166,9 +168,11 @@ public class InfoVideojuegoController implements Initializable {
         
         Label tituloReview=new Label("Reseñas: ");
         
-        Button botonfecha=new Button("Ver más antiguos:  ");
-        Button botonvaloracion =new Button("Ver más antiguos:  ");
-        infoReview.getChildren().addAll(tituloReview,botonfecha,botonvaloracion);
+        Button botonfecha=new Button("Ver más antiguos ");
+        botonfecha.setOnAction(eh->ordenarReviewsFecha());
+        Button botonValoracion =new Button("Ver por mejores Reseñas ");
+        botonValoracion.setOnAction(eh->ordenarReviewsValoracion());
+        infoReview.getChildren().addAll(tituloReview,botonfecha,botonValoracion);
 
        return infoReview; 
     }
@@ -186,6 +190,39 @@ public class InfoVideojuegoController implements Initializable {
         
         return (float) s/e;
     }
-
     
+    public void ordenarReviewsFecha(){
+        LCDE<Review> tmp = new LCDE<>();
+        PriorityQueue<Review> colaReview = new PriorityQueue<>((v1,v2)->{
+            return v1.getFecha().compareTo(v2.getFecha());
+        });
+        for (Review v : videojuegoe.getReviews()) {
+            colaReview.offer(v);
+        }
+        while (!colaReview.isEmpty()) {
+            tmp.addLast(colaReview.remove());
+        }
+        vboxReview.getChildren().clear();
+
+        Reviews(tmp);
+    }
+    
+    
+        public void ordenarReviewsValoracion(){
+        LCDE<Review> tmp = new LCDE<>();
+        PriorityQueue<Review> colaReview = new PriorityQueue<>((v1,v2)->{
+            return v2.getValoracion()-(v1.getValoracion());
+        });
+        for (Review v : videojuegoe.getReviews()) {
+            colaReview.offer(v);
+        }
+        while (!colaReview.isEmpty()) {
+            tmp.addLast(colaReview.remove());
+        }
+        vboxReview.getChildren().clear();
+
+        Reviews(tmp);
+    }
 }
+
+
