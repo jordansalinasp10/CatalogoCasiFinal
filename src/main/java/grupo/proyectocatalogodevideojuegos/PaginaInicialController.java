@@ -20,6 +20,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,6 +53,8 @@ public class PaginaInicialController implements Initializable {
     private ImageView imgLupa;
     @FXML
     private Button bwish;
+    @FXML
+    private ScrollPane scroll;
 
 
     
@@ -88,20 +91,21 @@ public class PaginaInicialController implements Initializable {
 
             vbox.getChildren().add(imageView);
             Label titleLabel = new Label(videojuego.getTitulo());
-            titleLabel.setPadding(new Insets(8, 0, 0, 0));
-            titleLabel.setTextFill(Color.web("#F5F5F5"));
-            titleLabel.setFont(Font.font("SansSerif", 13));
+            titleLabel.setWrapText(true);
+            titleLabel.setPadding(new Insets(10, 0, 10, 0));
+            titleLabel.setTextFill(Color.web("#ffffff"));
+            titleLabel.setFont(Font.font("sans-serif", 13));
             titleLabel.setMaxWidth(150);
             vbox.getChildren().add(titleLabel);
 
             Button botonWish= new Button("Agregar a WishList");
-            Label fecha = new Label(videojuego.getFechaDeLanzamiento());
+            /*Label fecha = new Label(videojuego.getFechaDeLanzamiento());
             fecha.setPadding(new Insets(8, 0, 0, 0));
             fecha.setTextFill(Color.web("#F5F5F5"));
             fecha.setFont(Font.font("SansSerif", 13));
             fecha.setMaxWidth(150);
 
-            vbox.getChildren().add(fecha);
+            vbox.getChildren().add(fecha);*/
             vbox.getChildren().add(botonWish);
 
             
