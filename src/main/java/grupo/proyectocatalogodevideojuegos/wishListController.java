@@ -3,6 +3,7 @@ package grupo.proyectocatalogodevideojuegos;
 
 import grupo.modelo.LCDE;
 import grupo.modelo.Videojuego;
+import grupo.modelo.WishList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,6 +13,10 @@ import grupo.proyectocatalogodevideojuegos.PaginaInicialController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.VBox;
 
 
 public class wishListController implements  Initializable {
@@ -19,15 +24,17 @@ public class wishListController implements  Initializable {
     private Button back;
     @FXML
     private HBox hB1;
-    @FXML
-    private HBox hB2;
-    @FXML
-    private HBox hB3;
 
     private LCDE<Videojuego> lista;
 
     private int valorDerecha;
     private int valorIzquierda=0;
+    @FXML
+    private Button btnAgregar;
+    @FXML
+    private VBox VBoxLista;
+    @FXML
+    private VBox contenedorPrincipal;
 
     @Override
     public void initialize(URL url,ResourceBundle rb){
@@ -38,10 +45,55 @@ public class wishListController implements  Initializable {
                 ex.printStackTrace();
             }
         });
+        
+        
+        btnAgregar.setOnAction(eh->{
+            asignarNombre();
+        });
 
 
 
 
     }
+     private void asignarNombre(){
+         VBox contenedorLista = new VBox();
+         HBox hBoxParteDeArriba = new HBox();
+         TextField txtNombre = new TextField();
+         hBoxParteDeArriba.getChildren().add(txtNombre);
+         contenedorLista.getChildren().add(hBoxParteDeArriba);
+         VBoxLista.getChildren().add(contenedorLista);
+         
+         contenedorPrincipal.setOnKeyPressed(eh -> {
+            if (eh.getCode().equals(KeyCode.ENTER)) {
+                contenedorPrincipal.requestFocus();
+                crearApartadoListas(hBoxParteDeArriba,contenedorLista);
+            }
+        });
+         
+         
+         
+         
+         
+         
+     }
+     
+     private void crearApartadoListas(HBox hBoxParteDeArriba, VBox contenedorLista){
+         TextField x = (TextField)hBoxParteDeArriba.getChildren().get(0);
+         WishList lista =new WishList(x.getText());
+         hBoxParteDeArriba.getChildren().clear();
+         
+         Label LbNombre = new Label(lista.getNombre());
+                 
+         Button btnAnterior = new Button("<");
+         Button btnSiguiente = new Button(">");
+         hBoxParteDeArriba.getChildren().addAll(LbNombre,btnAnterior,btnSiguiente);
+         
+         HBox hBoxParteDeAbajo = new HBox();
+         hBoxParteDeAbajo.getChildren().add(btnAnterior);
+         
+         contenedorLista.getChildren().addAll(hBoxParteDeArriba,hBoxParteDeAbajo);
+         
+     }
+    
 
 }

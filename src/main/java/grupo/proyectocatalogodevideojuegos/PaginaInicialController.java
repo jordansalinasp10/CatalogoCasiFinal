@@ -39,8 +39,6 @@ public class PaginaInicialController implements Initializable {
     public static Videojuego ultimoVideojuegoElegido;
     @FXML
     private TextField buscarTitulo;
-    /*@FXML
-    private Button btnBuscar;*/
     LCDE<Videojuego> videojuegos;
     LCDE<Videojuego> listaInicialVideojuegos;
     @FXML
@@ -107,7 +105,7 @@ public class PaginaInicialController implements Initializable {
 
             
             imageView.setOnMouseClicked(event -> cambioAInfoVideojuego(videojuego));
-            botonWish.setOnAction(eh->agregarAwishList());
+            botonWish.setOnAction(eh->agregarAwishList(videojuego));
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -242,9 +240,9 @@ public class PaginaInicialController implements Initializable {
            ex.printStackTrace();
        }
     }
-    public void agregarAwishList(){
+    public static void agregarAwishList(Videojuego videojuego){
         LCDE<Videojuego> listaRetorno=new LCDE<>();
-        Videojuego juego=ultimoVideojuegoElegido;
+        Videojuego juego=videojuego;
         listaRetorno.addLast(juego);
 
         System.out.println(juego);

@@ -47,6 +47,8 @@ public class InfoVideojuegoController implements Initializable {
     private TilePane panelCapturas;
     @FXML
     private VBox vboxReview;
+    @FXML
+    private VBox vBoxInformacionReview;
 
 
     
