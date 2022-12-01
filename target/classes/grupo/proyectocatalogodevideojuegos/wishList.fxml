@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupo.proyectocatalogodevideojuegos.wishListController">
+   <children>
+      <HBox fx:id="hB1" prefHeight="60.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="back" mnemonicParsing="false" text="Back">
+               <HBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </HBox.margin></Button>
+         </children></HBox>
+      <HBox fx:id="hB2" layoutY="62.0" prefHeight="147.0" prefWidth="600.0" />
+      <HBox fx:id="hB3" layoutY="252.0" prefHeight="147.0" prefWidth="600.0" />
+   </children>
+</AnchorPane>

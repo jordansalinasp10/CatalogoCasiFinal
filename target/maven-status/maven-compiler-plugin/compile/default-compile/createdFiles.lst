@@ -1,0 +1,9 @@
+grupo\modelo\LectorCsvCatalogo.class
+grupo\modelo\LCDE.class
+grupo\proyectocatalogodevideojuegos\InfoVideojuegoController.class
+module-info.class
+grupo\proyectocatalogodevideojuegos\PaginaInicialController.class
+grupo\modelo\LCDE$Node.class
+grupo\modelo\LCDE$CustomIterator.class
+grupo\modelo\Videojuego.class
+grupo\proyectocatalogodevideojuegos\App.class

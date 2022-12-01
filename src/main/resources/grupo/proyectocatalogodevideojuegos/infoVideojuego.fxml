@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="678.0" prefWidth="749.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupo.proyectocatalogodevideojuegos.InfoVideojuegoController">
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+   <content>
+      <VBox prefHeight="678.0" prefWidth="670.0" style="-fx-background-color: #121212;">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="atras" alignment="CENTER" mnemonicParsing="false" prefHeight="38.0" prefWidth="52.0" style="-fx-background-color: #ADD8E6;" text="Back">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Label fx:id="titulo" text="Label" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="32.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="50.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <ImageView fx:id="portada" fitHeight="253.0" fitWidth="305.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox alignment="TOP_CENTER" prefHeight="264.0" prefWidth="251.0">
+                     <children>
+                        <Label text="Capturas de pantalla" textFill="WHITE">
+                           <font>
+                              <Font name="SansSerif Regular" size="21.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane fx:id="capturas" prefHeight="226.0" prefWidth="250.0" style="-fx-background-color: #121212;" vbarPolicy="NEVER">
+                           <content>
+                              <TilePane fx:id="panelCapturas" style="-fx-background-color: #121212;" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label fx:id="descripcion" text="Label" textFill="WHITE" />
+            <Label text="Genero" textFill="WHITE" />
+            <Label fx:id="genero" text="Label" textFill="WHITE" />
+            <VBox fx:id="vboxReview" prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </VBox>
+   </content>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+</ScrollPane>
