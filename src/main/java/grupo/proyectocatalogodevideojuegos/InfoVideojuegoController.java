@@ -73,8 +73,7 @@ public class InfoVideojuegoController implements Initializable {
         }
         Label tituloReview=new Label("Reseñas: ");
         
-        String avg=Float.toString(promedioValoracion(videojuegoe.getReviews()));
-        Label prome=new Label("Promedio de valoraciones: "+avg+"/100");
+        Label prome=new Label("Promedio de valoraciones: "+promedioValoracion()+"/100");
         vBoxInformacionReview.getChildren().addAll(prome,infoReview());
         
         infoReview();
@@ -177,18 +176,20 @@ public class InfoVideojuegoController implements Initializable {
        return infoReview; 
     }
 
-    public float promedioValoracion(LCDE<Review> reviews){
+    public String promedioValoracion(){
+        
         int s=0;
         int e=0;
-        for(Review r: reviews){
+        for(Review r: videojuegoe.getReviews()){
             s+=r.getValoracion(); 
             e++;
         }
         if(e==0){
-            return 0;
+            return "0";
         }
         
-        return (float) s/e;
+        String avg=Integer.toString(s/e);
+        return avg;
     }
     
     public void ordenarReviewsFecha(){
