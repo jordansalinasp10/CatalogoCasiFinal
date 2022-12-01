@@ -23,8 +23,10 @@ public class LectorCsvCatalogo {
                 
                 vj.addReviews(new Review("Muy bueno","JordanSP10",90,"2022-11-20"));
                 vj.addReviews(new Review("Decente","Licc17",70,"2022-11-21"));                
-                
-            
+                vj.addReviews(new Review("Me encantoo!","DLaborde",100,"2020-07-10"));  
+                vj.addReviews(new Review("Aburrido la mitad de la campana","JorgeG",44,"2021-10-10"));  
+                vj.addReviews(new Review("Me gustó pero no lo jugaría de nuevo","Xxx_ProMaster_xxX",55,"2019-01-10"));  
+                vj.addReviews(new Review("Disfrutable","DaniLI",75,"2020-12-08"));  
                 videojuegos.addLast(vj);
                
      
