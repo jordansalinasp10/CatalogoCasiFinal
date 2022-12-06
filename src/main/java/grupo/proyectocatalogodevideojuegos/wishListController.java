@@ -48,6 +48,8 @@ public class wishListController implements  Initializable {
 
     @Override
     public void initialize(URL url,ResourceBundle rb){
+
+         
         //VBoxLista.getChildren().addAll(cola);
         actions();
  
@@ -60,6 +62,8 @@ public class wishListController implements  Initializable {
          contenedorLista.getChildren().add(hBoxParteDeArriba);
          VBoxLista.getChildren().add(contenedorLista);
          
+
+         
          contenedorPrincipal.setOnKeyPressed(eh -> {
             if (eh.getCode().equals(KeyCode.ENTER)) {
                 contenedorPrincipal.requestFocus();
@@ -69,7 +73,6 @@ public class wishListController implements  Initializable {
      }
      
      private void crearApartadoListas(HBox hBoxParteDeArriba, VBox contenedorLista){
-                presentarListaPersonalizadas(LectorCsvCatalogo.cargarListaPersonalizada());
          TextField x = (TextField)hBoxParteDeArriba.getChildren().get(0);
          WishList lista =new WishList(x.getText());
          
@@ -90,6 +93,11 @@ public class wishListController implements  Initializable {
        
          listaWishList.addLast(lista);
          LectorCsvCatalogo.guardarWishList(lista);
+         
+         
+                          for(WishList lw: listaWishList){
+             //HBox presentarJuegosWishList(LCDE<Videojuego> listaV
+             VBoxLista.getChildren().add(presentarJuegosWishList(lw.getLista()));
      }
     
      private void actions(){
@@ -130,7 +138,7 @@ public class wishListController implements  Initializable {
             
             vbox.getChildren().add(vbox);
 
-           
+           HBfinal.getChildren().add(vbox);
            
             
         } catch (IOException e) {
@@ -139,8 +147,5 @@ public class wishListController implements  Initializable {
         }//final for
        return HBfinal;
     }
-    private void presentarListaPersonalizadas(WishList wl){
-        
-       listaWishList.addLast(wl);
-    }
+  
 }

@@ -30,7 +30,7 @@ public class AsignarWishListController implements Initializable {
         }
         btnAceptar.setOnAction(eh->{
             WishList opcion = comboOpciones.getValue();
-            opcion.getLista().addLast(PaginaInicialController.videojuegoElegidoWL);
+            opcion.addJuego(PaginaInicialController.videojuegoElegidoWL);
             try {
             App.setRoot("paginaInicial");
         } catch (IOException ex) {
