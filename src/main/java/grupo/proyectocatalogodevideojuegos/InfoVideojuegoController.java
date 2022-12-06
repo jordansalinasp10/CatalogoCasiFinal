@@ -27,6 +27,7 @@ import grupo.modelo.*;
 import static grupo.proyectocatalogodevideojuegos.PaginaInicialController.agregarAwishList;
 import java.util.PriorityQueue;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -54,7 +55,7 @@ public class InfoVideojuegoController implements Initializable {
     @FXML
     private VBox vBoxInformacionReview;
     @FXML
-    private ScrollPane root;
+    private ScrollPane scroll;
 
 
     
@@ -64,7 +65,7 @@ public class InfoVideojuegoController implements Initializable {
         
         try {
             titulo.setText(videojuegoe.getTitulo());
-            descripcion.setText(videojuegoe.getDescripcion());
+            descripcion.setText(LectorCsvCatalogo.toUTF8(videojuegoe.getDescripcion()));
             descripcion.setWrapText​(true);
             genero.setText(videojuegoe.getGeneros());
             portada.setImage(new Image(new FileInputStream("src\\main\\resources\\grupo\\ListaVideojuegos\\imagenes\\Portada\\" + videojuegoe.getPortada()), 1280, 720, true, false));
@@ -143,7 +144,7 @@ public class InfoVideojuegoController implements Initializable {
         comentario.setFont(Font.font("SansSerif", FontPosture.ITALIC, 14));
         
         VboxR.getChildren().addAll(nombre_fecha,valoracion,comentario);
-        VboxR.setPadding(new Insets(0, 0, 25, 0));
+        VboxR.setPadding(new Insets(0, 0, 30, 0));
         return VboxR;
               
         
@@ -191,17 +192,14 @@ public class InfoVideojuegoController implements Initializable {
         botonfecha.setTextFill(Color.web("rgb(255, 255, 255)"));
         botonfecha.setStyle("-fx-background-color:transparent;"
                 + "-fx-border-color: white;");
+        botonfecha.setCursor(Cursor.CLOSED_HAND);
         
         botonfecha.setOnAction(eh->ordenarReviewsFecha());
         Button botonValoracion =new Button("Ver por mejores Reseñas ");
         botonValoracion.setTextFill(Color.web("rgb(255, 255, 255)"));
+        botonValoracion.setCursor(Cursor.CLOSED_HAND);
         botonValoracion.setStyle("-fx-background-color:transparent;"
                 + "-fx-border-color: white;");
-        botonValoracion.getStyleClass().add("botones");
-        
-        
-        root.getStylesheets().add("src/main/resources/grupo/scrollPane.css");
-        
         botonValoracion.setOnAction(eh->ordenarReviewsValoracion());
         infoReview.getChildren().addAll(tituloReview,botonfecha,botonValoracion);
         infoReview.setAlignment(Pos.CENTER);

@@ -72,4 +72,19 @@ public class LectorCsvCatalogo {
         return wl; 
     }
     
+    
+    public static String toUTF8(String s) {
+    if (s != null) {
+        String ss;
+        try {
+            ss = new String(s.getBytes("ISO-8859-1"), "UTF-8");
+        } catch (UnsupportedEncodingException ex) {
+            ex.printStackTrace(System.out);
+            ss = null;
+        }
+        return ss;
+    } else {
+        return "";
+    }
+}
 }
