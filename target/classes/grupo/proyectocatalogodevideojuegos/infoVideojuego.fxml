@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scroll" fitToWidth="true" hbarPolicy="NEVER" prefHeight="678.0" prefWidth="749.0" style="-fx-background-color: rgb(18, 18, 18);" stylesheets="@../scrollPane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupo.proyectocatalogodevideojuegos.InfoVideojuegoController">
+<ScrollPane fx:id="scroll" fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: #121212;" stylesheets="@../scrollPane.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupo.proyectocatalogodevideojuegos.InfoVideojuegoController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -87,7 +87,10 @@
             <Label fx:id="genero" text="Label" textFill="WHITE">
                <padding>
                   <Insets bottom="20.0" top="10.0" />
-               </padding></Label>
+               </padding>
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font></Label>
             <VBox fx:id="vBoxInformacionReview" />
             <VBox fx:id="vboxReview" />
          </children>
@@ -97,6 +100,6 @@
       </VBox>
    </content>
    <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      <Insets left="15.0" right="15.0" top="15.0" />
    </padding>
 </ScrollPane>

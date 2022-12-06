@@ -99,6 +99,7 @@ public class PaginaInicialController implements Initializable {
             vbox.getChildren().add(titleLabel);
 
             Button botonWish= new Button("Agregar a lista");
+            botonWish.setDisable(true);
             /*Label fecha = new Label(videojuego.getFechaDeLanzamiento());
             fecha.setPadding(new Insets(8, 0, 0, 0));
             fecha.setTextFill(Color.web("#F5F5F5"));

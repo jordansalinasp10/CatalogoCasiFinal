@@ -69,6 +69,7 @@ public class InfoVideojuegoController implements Initializable {
             descripcion.setWrapText​(true);
             descripcion.setTextFill(Color.web("rgb(168, 167, 167)"));
             genero.setText(videojuegoe.getGeneros());
+            genero.setTextFill(Color.web("rgb(168, 167, 167)"));
             portada.setImage(new Image(new FileInputStream("src\\main\\resources\\grupo\\ListaVideojuegos\\imagenes\\Portada\\" + videojuegoe.getPortada()), 1280, 720, true, false));
             portada.setFitWidth(200);
             portada.setFitHeight(300);
@@ -88,7 +89,7 @@ public class InfoVideojuegoController implements Initializable {
         
         vBoxInformacionReview.getChildren().addAll(prome,infoReview());
         vBoxInformacionReview.setAlignment(Pos.CENTER);
-        vBoxInformacionReview.setPadding(new Insets(0, 0, 10, 0));
+        vBoxInformacionReview.setPadding(new Insets(0, 0, 20, 0));
         mostrarVideojuegos(videojuegoe.getCapturasDePantalla());
         
         Reviews(videojuegoe.getReviews());
@@ -145,7 +146,7 @@ public class InfoVideojuegoController implements Initializable {
         comentario.setFont(Font.font("SansSerif", FontPosture.ITALIC, 14));
         
         VboxR.getChildren().addAll(nombre_fecha,valoracion,comentario);
-        VboxR.setPadding(new Insets(0, 0, 30, 0));
+        VboxR.setPadding(new Insets(0, 0, 35, 0));
         return VboxR;
               
         
