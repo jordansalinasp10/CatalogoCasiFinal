@@ -26,6 +26,7 @@ import javafx.scene.layout.*;
 import grupo.modelo.*;
 import static grupo.proyectocatalogodevideojuegos.PaginaInicialController.agregarAwishList;
 import java.util.PriorityQueue;
+import javafx.geometry.Pos;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -60,6 +61,7 @@ public class InfoVideojuegoController implements Initializable {
         try {
             titulo.setText(videojuegoe.getTitulo());
             descripcion.setText(videojuegoe.getDescripcion());
+            descripcion.setWrapText​(true);
             genero.setText(videojuegoe.getGeneros());
             portada.setImage(new Image(new FileInputStream("src\\main\\resources\\grupo\\ListaVideojuegos\\imagenes\\Portada\\" + videojuegoe.getPortada()), 1280, 720, true, false));
             portada.setFitWidth(200);
@@ -74,9 +76,10 @@ public class InfoVideojuegoController implements Initializable {
         Label tituloReview=new Label("Reseñas: ");
         
         Label prome=new Label("Promedio de valoraciones: "+promedioValoracion()+"/100");
+        prome.setPadding(new Insets(0, 0, 10, 0));
+        prome.setFont(Font.font("sans-serif", 25));
         vBoxInformacionReview.getChildren().addAll(prome,infoReview());
-        
-        infoReview();
+        vBoxInformacionReview.setAlignment(Pos.CENTER);
         mostrarVideojuegos(videojuegoe.getCapturasDePantalla());
 
         
@@ -172,6 +175,8 @@ public class InfoVideojuegoController implements Initializable {
         Button botonValoracion =new Button("Ver por mejores Reseñas ");
         botonValoracion.setOnAction(eh->ordenarReviewsValoracion());
         infoReview.getChildren().addAll(tituloReview,botonfecha,botonValoracion);
+        infoReview.setAlignment(Pos.CENTER);
+        infoReview.setPadding(new Insets(0, 0, 10, 0));
 
        return infoReview; 
     }

@@ -66,12 +66,27 @@
                   </VBox>
                </children>
             </HBox>
-            <Label fx:id="descripcion" text="Label" textFill="WHITE" />
-            <Label text="Genero" textFill="WHITE" />
-            <Label fx:id="genero" text="Label" textFill="WHITE" />
+            <Label fx:id="descripcion" text="Label" textFill="WHITE">
+               <padding>
+                  <Insets top="10.0" />
+               </padding></Label>
+            <Label text="Genero" textFill="WHITE">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets top="20.0" />
+               </padding></Label>
+            <Label fx:id="genero" text="Label" textFill="WHITE">
+               <padding>
+                  <Insets bottom="20.0" top="10.0" />
+               </padding></Label>
             <VBox fx:id="vBoxInformacionReview" prefHeight="200.0" prefWidth="100.0" />
             <VBox fx:id="vboxReview" prefHeight="200.0" prefWidth="100.0" />
          </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
       </VBox>
    </content>
    <padding>

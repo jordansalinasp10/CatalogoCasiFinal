@@ -43,7 +43,7 @@ public class wishListController implements  Initializable {
 
     @Override
     public void initialize(URL url,ResourceBundle rb){
-        VBoxLista.getChildren().addAll(cola);
+        //VBoxLista.getChildren().addAll(cola);
         actions();
     }
      private void asignarNombre(){
@@ -66,6 +66,9 @@ public class wishListController implements  Initializable {
          TextField x = (TextField)hBoxParteDeArriba.getChildren().get(0);
          WishList lista =new WishList(x.getText());
          this.listaWishList.addLast(lista);
+         for(WishList w:listaWishList){
+             System.out.println(w);
+         }
          hBoxParteDeArriba.getChildren().clear();
          
          Label LbNombre = new Label(lista.getNombre());
@@ -77,7 +80,8 @@ public class wishListController implements  Initializable {
          HBox hBoxParteDeAbajo = new HBox();
          
          contenedorLista.getChildren().add(hBoxParteDeAbajo);
-         cola.add(contenedorLista);
+         cola.offer(contenedorLista);
+         
      }
     
      private void actions(){
