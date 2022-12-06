@@ -29,6 +29,7 @@ import java.util.PriorityQueue;
 import javafx.geometry.Pos;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 
 
 public class InfoVideojuegoController implements Initializable {
@@ -52,12 +53,15 @@ public class InfoVideojuegoController implements Initializable {
     private VBox vboxReview;
     @FXML
     private VBox vBoxInformacionReview;
+    @FXML
+    private ScrollPane root;
 
 
     
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         try {
             titulo.setText(videojuegoe.getTitulo());
             descripcion.setText(videojuegoe.getDescripcion());
@@ -66,22 +70,24 @@ public class InfoVideojuegoController implements Initializable {
             portada.setImage(new Image(new FileInputStream("src\\main\\resources\\grupo\\ListaVideojuegos\\imagenes\\Portada\\" + videojuegoe.getPortada()), 1280, 720, true, false));
             portada.setFitWidth(200);
             portada.setFitHeight(300);
-
-
-
-
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
         Label tituloReview=new Label("Reseñas: ");
         
+        
+        
+        
         Label prome=new Label("Promedio de valoraciones: "+promedioValoracion()+"/100");
         prome.setPadding(new Insets(0, 0, 10, 0));
         prome.setFont(Font.font("sans-serif", 25));
+        prome.setTextFill(Color.web("rgb(255, 255, 255)"));
+        
+        
         vBoxInformacionReview.getChildren().addAll(prome,infoReview());
         vBoxInformacionReview.setAlignment(Pos.CENTER);
+        vBoxInformacionReview.setPadding(new Insets(0, 0, 10, 0));
         mostrarVideojuegos(videojuegoe.getCapturasDePantalla());
-
         
         Reviews(videojuegoe.getReviews());
 
@@ -110,26 +116,34 @@ public class InfoVideojuegoController implements Initializable {
         
         Label nombreUsuario=new Label();
         nombreUsuario.setText("Usuario: "+r.getUsuario());
-        nombreUsuario.setTextFill(Color.web("#F5F5F5"));
-        nombreUsuario.setFont(Font.font("SansSerif", 13));
+        nombreUsuario.setTextFill(Color.web("rgb(255, 255, 255)"));
+        nombreUsuario.setFont(Font.font("SansSerif", 14));
         nombreUsuario.setMaxWidth(150);
         Label fechaR=new Label();
         fechaR.setText("Usuario: "+r.getUsuario());
-        fechaR.setTextFill(Color.web("#F5F5F5"));
-        fechaR.setFont(Font.font("SansSerif", 13));
-        fechaR.setMaxWidth(150);
+        fechaR.setTextFill(Color.web("rgb(255, 255, 255)"));
+        fechaR.setFont(Font.font("SansSerif", 14));
+        //fechaR.setMaxWidth(150);
         fechaR.setText("Publicado el: "+r.getFecha()); 
         
         nombre_fecha.getChildren().addAll(nombreUsuario,fechaR);
+        nombre_fecha.getPrefWidth();
+        nombre_fecha.setPadding(new Insets(0, 0, 6, 0));
         
         Label valoracion=new Label();
         valoracion.setText("Valoracion: "+r.getValoracion()+"/100");
+        valoracion.setPadding(new Insets(0, 0, 6, 0));
+        valoracion.setFont(Font.font("SansSerif", 14));
+        valoracion.setTextFill(Color.web("rgb(168, 167, 167)"));
         
         Label comentario=new Label();
         comentario.setText(r.getComentario());
+        //comentario.setFont(Font.font("SansSerif", 14));
+        comentario.setTextFill(Color.web("rgb(168, 167, 167)"));
+        comentario.setFont(Font.font("SansSerif", FontPosture.ITALIC, 14));
         
         VboxR.getChildren().addAll(nombre_fecha,valoracion,comentario);
-        
+        VboxR.setPadding(new Insets(0, 0, 25, 0));
         return VboxR;
               
         
@@ -169,10 +183,25 @@ public class InfoVideojuegoController implements Initializable {
         HBox infoReview=new HBox(15);
         
         Label tituloReview=new Label("Reseñas: ");
+        tituloReview.setFont(Font.font("sans-serif", 15));
+        tituloReview.setTextFill(Color.web("rgb(168, 167, 167)"));
+        
         
         Button botonfecha=new Button("Ver más antiguos ");
+        botonfecha.setTextFill(Color.web("rgb(255, 255, 255)"));
+        botonfecha.setStyle("-fx-background-color:transparent;"
+                + "-fx-border-color: white;");
+        
         botonfecha.setOnAction(eh->ordenarReviewsFecha());
         Button botonValoracion =new Button("Ver por mejores Reseñas ");
+        botonValoracion.setTextFill(Color.web("rgb(255, 255, 255)"));
+        botonValoracion.setStyle("-fx-background-color:transparent;"
+                + "-fx-border-color: white;");
+        botonValoracion.getStyleClass().add("botones");
+        
+        
+        root.getStylesheets().add("src/main/resources/grupo/scrollPane.css");
+        
         botonValoracion.setOnAction(eh->ordenarReviewsValoracion());
         infoReview.getChildren().addAll(tituloReview,botonfecha,botonValoracion);
         infoReview.setAlignment(Pos.CENTER);

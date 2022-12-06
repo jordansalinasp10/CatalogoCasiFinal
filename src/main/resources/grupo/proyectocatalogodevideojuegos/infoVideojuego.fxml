@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="678.0" prefWidth="749.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupo.proyectocatalogodevideojuegos.InfoVideojuegoController">
+<ScrollPane fx:id="root" fitToWidth="true" hbarPolicy="NEVER" prefHeight="678.0" prefWidth="749.0" style="-fx-background-color: #121212;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grupo.proyectocatalogodevideojuegos.InfoVideojuegoController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>

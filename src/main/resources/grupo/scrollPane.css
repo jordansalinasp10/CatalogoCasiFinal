@@ -28,3 +28,8 @@
     -fx-background-radius: 2em;
 }
 
+
+.botones:hover{
+    -fx-background-color: green;
+}
+
