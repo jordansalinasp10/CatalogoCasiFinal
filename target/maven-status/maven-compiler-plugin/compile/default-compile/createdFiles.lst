@@ -1,9 +1,13 @@
+grupo\proyectocatalogodevideojuegos\AsignarWishListController.class
+grupo\modelo\Review.class
 grupo\modelo\LectorCsvCatalogo.class
 grupo\modelo\LCDE.class
 grupo\proyectocatalogodevideojuegos\InfoVideojuegoController.class
 module-info.class
+grupo\modelo\WishList.class
 grupo\proyectocatalogodevideojuegos\PaginaInicialController.class
 grupo\modelo\LCDE$Node.class
 grupo\modelo\LCDE$CustomIterator.class
 grupo\modelo\Videojuego.class
+grupo\proyectocatalogodevideojuegos\wishListController.class
 grupo\proyectocatalogodevideojuegos\App.class

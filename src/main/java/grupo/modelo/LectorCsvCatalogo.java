@@ -3,6 +3,8 @@ package grupo.modelo;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,8 +30,7 @@ public class LectorCsvCatalogo {
                 vj.addReviews(new Review("Me gustó pero no lo jugaría de nuevo","Xxx_ProMaster_xxX",55,"2019-01-10"));  
                 vj.addReviews(new Review("Disfrutable","DaniLI",75,"2020-12-08"));  
                 videojuegos.addLast(vj);
-               
-     
+                
             }
         
         }catch (IOException e){
@@ -46,4 +47,29 @@ public class LectorCsvCatalogo {
         }
         return lista;
     }
+    
+    public static void guardarWishList(WishList juegos){
+
+        try(ObjectOutputStream serializar=new ObjectOutputStream(new FileOutputStream("src\\main\\resources\\grupo\\ListaVideojuegos\\Lista.csv"))){
+      serializar.writeObject(juegos);
+        }catch(IOException e){
+            e.printStackTrace();
+    }
+    }
+    
+    
+    public static WishList cargarListaPersonalizada(){
+        WishList wl=new WishList();
+        try(ObjectInputStream deserializar=new ObjectInputStream(new FileInputStream("src\\main\\resources\\grupo\\ListaVideojuegos\\Lista.csv"))){
+
+
+         return (WishList)deserializar.readObject();        
+
+ 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return wl; 
+    }
+    
 }

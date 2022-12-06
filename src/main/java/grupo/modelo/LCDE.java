@@ -3,9 +3,9 @@ package grupo.modelo;
 
 import java.util.Comparator;
 import java.util.Iterator;
+import java.io.Serializable;
 
-
-public class LCDE<E> implements Iterable<E>{
+public class LCDE<E> implements Iterable<E>,Serializable{
     private Node<E> header;
     private Node<E> last;
     private int lenght;
