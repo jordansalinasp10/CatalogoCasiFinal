@@ -13,6 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 
 public class AsignarWishListController implements Initializable {
@@ -21,6 +24,10 @@ public class AsignarWishListController implements Initializable {
     private ComboBox<WishList> comboOpciones;
     @FXML
     private Button btnAceptar;
+    @FXML
+    private ImageView imagen;
+    @FXML
+    private VBox contenedorPrincipal;
 
     
     @Override
@@ -37,6 +44,11 @@ public class AsignarWishListController implements Initializable {
             ex.printStackTrace();
         }
         });
+        imagen.setImage(new Image("src\\main\\resources\\grupo\\Alerta"));
+        imagen.setFitWidth(200);
+        imagen.setFitHeight(300);
+        contenedorPrincipal.getChildren().add(imagen);
+        
     }    
     
 }

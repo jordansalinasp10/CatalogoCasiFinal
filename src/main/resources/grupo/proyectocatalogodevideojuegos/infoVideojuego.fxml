@@ -20,7 +20,7 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Button fx:id="atras" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="25.0" style="-fx-background-color: rgb(255, 255, 255); -fx-background-radius: 85;" text="&lt;">
+                  <Button fx:id="atras" alignment="CENTER" mnemonicParsing="false" prefHeight="23.0" prefWidth="51.0" style="-fx-background-color: rgb(255, 255, 255); -fx-background-radius: 85;" text="Back">
                      <HBox.margin>
                         <Insets right="15.0" />
                      </HBox.margin>
@@ -63,6 +63,8 @@
                               <TilePane fx:id="panelCapturas" style="-fx-background-color: #121212;" />
                            </content>
                         </ScrollPane>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #A9A9A9;" text="&lt;" />
+                        <Button mnemonicParsing="false" style="-fx-background-color: #A9A9A9;" text="&gt;" />
                      </children>
                   </VBox>
                </children>
