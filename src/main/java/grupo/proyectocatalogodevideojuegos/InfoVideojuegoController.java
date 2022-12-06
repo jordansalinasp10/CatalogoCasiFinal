@@ -67,6 +67,7 @@ public class InfoVideojuegoController implements Initializable {
             titulo.setText(videojuegoe.getTitulo());
             descripcion.setText(LectorCsvCatalogo.toUTF8(videojuegoe.getDescripcion()));
             descripcion.setWrapText​(true);
+            descripcion.setTextFill(Color.web("rgb(168, 167, 167)"));
             genero.setText(videojuegoe.getGeneros());
             portada.setImage(new Image(new FileInputStream("src\\main\\resources\\grupo\\ListaVideojuegos\\imagenes\\Portada\\" + videojuegoe.getPortada()), 1280, 720, true, false));
             portada.setFitWidth(200);

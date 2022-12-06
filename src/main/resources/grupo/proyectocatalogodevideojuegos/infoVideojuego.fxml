@@ -18,7 +18,7 @@
    <content>
       <VBox style="-fx-background-color: #121212;">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT">
                <children>
                   <Button fx:id="atras" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="25.0" style="-fx-background-color: rgb(255, 255, 255); -fx-background-radius: 85;" text="&lt;">
                      <HBox.margin>
@@ -48,7 +48,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </ImageView>
-                  <VBox alignment="TOP_CENTER" prefHeight="264.0" prefWidth="251.0">
+                  <VBox alignment="CENTER" prefHeight="264.0" prefWidth="251.0">
                      <children>
                         <Label text="Capturas de pantalla" textFill="WHITE">
                            <font>
@@ -58,7 +58,7 @@
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </Label>
-                        <ScrollPane fx:id="capturas" prefHeight="226.0" prefWidth="250.0" style="-fx-background-color: rgb(18, 18, 18);" vbarPolicy="NEVER">
+                        <ScrollPane fx:id="capturas" style="-fx-background-color: rgb(18, 18, 18);" vbarPolicy="NEVER">
                            <content>
                               <TilePane fx:id="panelCapturas" style="-fx-background-color: #121212;" />
                            </content>
@@ -67,17 +67,23 @@
                   </VBox>
                </children>
             </HBox>
-            <Label fx:id="descripcion" text="Label" textFill="WHITE">
+            <Label fx:id="descripcion" text="Label" textAlignment="JUSTIFY" textFill="WHITE">
                <padding>
                   <Insets top="20.0" />
-               </padding></Label>
+               </padding>
+               <font>
+                  <Font name="SansSerif Regular" size="14.0" />
+               </font></Label>
             <Label text="Genero" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <padding>
                   <Insets top="20.0" />
-               </padding></Label>
+               </padding>
+               <font>
+                  <Font name="SansSerif Regular" size="20.0" />
+               </font></Label>
             <Label fx:id="genero" text="Label" textFill="WHITE">
                <padding>
                   <Insets bottom="20.0" top="10.0" />
