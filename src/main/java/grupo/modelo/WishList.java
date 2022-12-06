@@ -19,11 +19,16 @@ public class WishList implements Serializable{
     public LCDE<Videojuego> getLista() {
         return lista;
     }
-
+    
     @Override
     public String toString() {
         return nombre;
     }
+    
+    public void addJuego(Videojuego vj){
+        lista.addLast(vj);
+    }
+            
     
     
     
