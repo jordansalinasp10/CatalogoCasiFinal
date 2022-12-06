@@ -99,7 +99,7 @@ public class wishListController implements  Initializable {
              //HBox presentarJuegosWishList(LCDE<Videojuego> listaV
              VBoxLista.getChildren().add(presentarJuegosWishList(lw.getLista()));
      }
-    
+     }
      private void actions(){
          back.setOnMouseClicked(event -> {
             try {
